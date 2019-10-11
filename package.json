@@ -1,7 +1,7 @@
 {
-  "name": "daily-weather",
+  "name": "weather-fetch",
   "version": "1.0.0",
-  "description": "Weather fetch service for daily SMS delivery",
+  "description": "Weather fetch service for daily weather app",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com-davidelden:davidelden/daily-weather.git"
+    "url": "git@github.com-davidelden:davidelden/weather-fetch.git"
   },
   "keywords": [
     "weather",

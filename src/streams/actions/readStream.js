@@ -9,7 +9,11 @@ const readStream = (streamName, elemId = '$', timeout = '0') => {
 
     if(stream) {
       newId = stream[0][1][0][0];
-      console.log('Stream:', stream);
+      let streamArr = [ ...stream[0][1][0][1] ],
+          msgIndex = streamArr.indexOf('message') + 1,
+          msg = streamArr[msgIndex];
+
+      console.log('Stream Message:', msg);
     }
 
     // Read CronJob Service emitted messages

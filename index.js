@@ -1,5 +1,4 @@
-const readStream = require('./src/streams/actions/readStream.js');
-
-const streamName = 'mystream';
+const readStream = require('./src/streams/actions/readStream.js'),
+      streamName = 'StartWeatherFetch';
 
 readStream(streamName);

@@ -1,5 +1,6 @@
 const redis = require('redis'),
-      client = redis.createClient({ host: 'redis' });
+      client = redis.createClient({ host: 'redis' }),
+      msgEmitter = require('../../emitter/msgEmitter.js');
 
 const readStream = (streamName, elemId = '$', timeout = '0') => {
   let newId = elemId;
@@ -13,7 +14,7 @@ const readStream = (streamName, elemId = '$', timeout = '0') => {
           msgIndex = streamArr.indexOf('message') + 1,
           msg = streamArr[msgIndex];
 
-      console.log('Stream Message:', msg);
+      msgEmitter.emit('streamMessage', msg);
     }
 
     // Read CronJob Service emitted messages

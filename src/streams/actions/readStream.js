@@ -17,22 +17,6 @@ const readStream = (streamName, elemId = '$', timeout = '0') => {
       msgEmitter.emit('streamMessage', msg);
     }
 
-    // Read CronJob Service emitted messages
-    // Do something when an actionable streamMessage is read
-    //
-    // ex:
-    //
-    // if(streamMessage === 'FetchUSEasternWeather') => messageEmitter.emit('beginUSEasternFetch');
-    //
-    // messageEmitter.on('beginUSEasternFetch', () => {
-    //
-    //    Do something on actionable messages (i.e. message: FetchUSEasternWeather)
-    //      • Emit start message to stream
-    //      • Begin fetching weather data
-    //      • Emit success/error message to stream
-    //      • Emit end message to stream
-    // })
-
     readStream(streamName, newId);
   });
 }

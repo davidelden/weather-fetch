@@ -1,4 +1,4 @@
 const config = require('../../knexfile.js'),
-      pg = require('knex')(config);
+      db = require('knex')(config);
 
-module.exports = pg;
+module.exports = db;

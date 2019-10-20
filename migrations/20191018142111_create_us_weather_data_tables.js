@@ -2,43 +2,43 @@ exports.up = function(knex) {
   return knex.schema
     .createTable('us_eastern', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })
     .createTable('us_central', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })
     .createTable('us_mountain', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })
     .createTable('us_arizona', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })
     .createTable('us_pacific', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })
     .createTable('us_alaska', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })
     .createTable('us_hawaii', tbl => {
       tbl.increments('id').primary();
-      tbl.integer('zip_code').index().unique();
+      tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
       tbl.timestamps();
     })

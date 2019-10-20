@@ -1,5 +1,6 @@
 const writeStream = require('../streams/actions/writeStream.js'),
       eventMessages = require('../streams/events/eventMessages.js'),
+      db = require('../db/connection.js'),
       streamName = 'WeatherFetch';
 
 const fetchMsgTimeZones = {
@@ -25,7 +26,13 @@ const fetchWeatherData = msg => {
 }
 
 const fetchZipCodes = tbl => {
-  // return arr of zip codes from time zone table [78745, 78704]
+  return db.select('zip_code')
+    .from(tbl)
+    .then(rows => {
+      let zipCodes = rows.map(row => row.zip_code);
+      return zipCodes;
+    })
+    .catch(err => console.error('error:', err));
 }
 
 const saveWeatherData = (data, zipCode) => {

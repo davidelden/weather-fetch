@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const migrateLatest = require('./src/db/migrateLatest.js'),
       readStream = require('./src/streams/actions/readStream.js'),
       msgEmitter = require('./src/emitter/msgEmitter'),

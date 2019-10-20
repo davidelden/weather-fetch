@@ -13,6 +13,10 @@ const fetchMsgTimeZones = {
   FetchUSHawaiiWeather: 'us_hawaii'
 }
 
+const weatherAPIUrl = (zipCode) => {
+  return process.env.WEATHER_API_BASE_URL + `?postal_code=${zipCode}&country=US&units=I&key=${process.env.WEATHER_API_KEY}`;
+}
+
 const fetchWeatherData = async msg => {
   // Publish start message to Redis stream
   writeStream(streamName, eventMessages['start']);
@@ -21,8 +25,11 @@ const fetchWeatherData = async msg => {
         zipCodes = await fetchZipCodes(dbTable);
 
   // Begin fetching weather data
+  zipCodes.forEach(code => {
+    const endPoint = weatherAPIUrl(code);
+    console.log('endPoint:', endPoint);
+  });
   // Emit success/error message to stream
-  console.log('[fetchWeatherData]', zipCodes);
 
   // Publish end message to Redis stream
   writeStream(streamName, eventMessages['end']);

@@ -28,4 +28,8 @@ const fetchZipCodes = tbl => {
   // return arr of zip codes from time zone table [78745, 78704]
 }
 
+const saveWeatherData = (data, zipCode) => {
+  // save fetched weather data into database
+}
+
 module.exports = fetchWeatherData;

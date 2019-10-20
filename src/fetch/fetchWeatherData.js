@@ -13,13 +13,16 @@ const fetchMsgTimeZones = {
   FetchUSHawaiiWeather: 'us_hawaii'
 }
 
-const fetchWeatherData = msg => {
+const fetchWeatherData = async msg => {
   // Publish start message to Redis stream
   writeStream(streamName, eventMessages['start']);
 
+  const dbTable = fetchMsgTimeZones[msg],
+        zipCodes = await fetchZipCodes(dbTable);
+
   // Begin fetching weather data
   // Emit success/error message to stream
-  console.log('[fetchWeatherData]', fetchMsgTimeZones[msg]);
+  console.log('[fetchWeatherData]', zipCodes);
 
   // Publish end message to Redis stream
   writeStream(streamName, eventMessages['end']);

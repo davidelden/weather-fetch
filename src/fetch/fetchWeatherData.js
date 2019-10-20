@@ -28,15 +28,14 @@ const fetchWeatherData = async msg => {
   writeStream(streamName, eventMessages['end']);
 }
 
-const fetchZipCodes = tbl => {
-  return db.select('zip_code')
+const fetchZipCodes = tbl => (
+  db.select('zip_code')
     .from(tbl)
     .then(rows => {
-      let zipCodes = rows.map(row => row.zip_code);
-      return zipCodes;
+      return rows.map(row => row.zip_code);
     })
-    .catch(err => console.error('error:', err));
-}
+    .catch(err => console.error('error:', err))
+)
 
 const saveWeatherData = (data, zipCode) => {
   // save fetched weather data into database

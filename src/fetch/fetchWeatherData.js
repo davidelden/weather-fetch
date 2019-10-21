@@ -91,7 +91,7 @@ const fetchFromAPI = (url, dbTbl, zipCode) => {
 const saveWeatherData = (dbTbl, zipCode, data) => {
   db(dbTbl)
     .where({ zip_code: zipCode })
-    .update({ data: data })
+    .update({ data: data, updated_at: db.fn.now() })
     .then(() => {
       writeStream(streamName, eventMessages['data'](zipCode));
       console.log(`${dbTbl} updated with ${zipCode} weather data`);

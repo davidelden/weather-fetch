@@ -1,46 +1,31 @@
 exports.up = function(knex) {
   return knex.schema
-    .createTable('us_eastern', tbl => {
+    .createTable('weather_data', tbl => {
       tbl.increments('id').primary();
       tbl.string('zip_code').index().unique();
       tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.timestamps(true, true);
+    })
+    .createTable('us_eastern', tbl => {
+      tbl.inherits('weather_data');
     })
     .createTable('us_central', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('zip_code').index().unique();
-      tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.inherits('weather_data');
     })
     .createTable('us_mountain', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('zip_code').index().unique();
-      tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.inherits('weather_data');
     })
     .createTable('us_arizona', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('zip_code').index().unique();
-      tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.inherits('weather_data');
     })
     .createTable('us_pacific', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('zip_code').index().unique();
-      tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.inherits('weather_data');
     })
     .createTable('us_alaska', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('zip_code').index().unique();
-      tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.inherits('weather_data');
     })
     .createTable('us_hawaii', tbl => {
-      tbl.increments('id').primary();
-      tbl.string('zip_code').index().unique();
-      tbl.jsonb('data');
-      tbl.timestamps();
+      tbl.inherits('weather_data');
     })
 };
 
@@ -53,4 +38,5 @@ exports.down = function(knex) {
     .dropTable('us_pacific')
     .dropTable('us_alaska')
     .dropTable('us_hawaii')
+    .dropTable('weather_data')
 };

@@ -1,2 +1,2 @@
-# daily-weather
-Receive a daily SMS weather forecast
+# weather-fetch
+Weather fetch microservice for daily weather app

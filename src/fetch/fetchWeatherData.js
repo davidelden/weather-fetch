@@ -19,6 +19,7 @@ const weatherAPIUrl = (zipCode) => {
 }
 
 const fetchWeatherData = async msg => {
+  if(!fetchMsgTimeZones[msg]) return;
   // Publish start message to Redis stream
   writeStream(streamName, eventMessages['start']);
 

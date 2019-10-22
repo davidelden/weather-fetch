@@ -73,9 +73,9 @@ const fetchFromAPI = (url, dbTbl, zipCode) => {
     res.on('end', () => {
       try {
         const parsedData = JSON.parse(rawData),
-              weatherData = { data: parsedData.data.slice(0,1) };
+              weatherData = parsedData.data.slice(0,1);
 
-        saveWeatherData(dbTbl, zipCode, weatherData);
+        saveWeatherData(dbTbl, zipCode, ...weatherData);
       } catch (err) {
         writeStream(streamName, eventMessages['error'](err.message));
         console.error(err.message);

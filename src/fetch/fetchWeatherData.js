@@ -33,7 +33,12 @@ const fetchWeatherData = async msg => {
         return (
           fetchFromAPI(currentTempEndPoint)
             .then(currentTempData => {
-              forecastData['current_temp'] = currentTempData['temp'];
+              const { temp, state_code, city_name } = currentTempData;
+
+              forecastData.current_temp = temp;
+              forecastData.state_code = state_code;
+              forecastData.city_name = city_name;
+
               return forecastData;
             })
            .catch(err => console.error(err))

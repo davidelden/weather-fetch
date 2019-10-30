@@ -1,10 +1,10 @@
+require('dotenv').config();
+
 module.exports = {
   client: 'pg',
   connection: {
-    host: 'db_weather_fetch',
-    user: 'postgres',
-    // host: process.env.DATABASE_HOST, // Host is docker-compose service name
-    // user: process.env.DATABASE_USER,
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
     database: 'weather_fetch_data'
   },
   pool: {

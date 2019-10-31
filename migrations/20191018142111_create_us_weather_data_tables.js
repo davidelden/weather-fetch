@@ -6,34 +6,6 @@ exports.up = function(knex) {
       tbl.jsonb('data');
       tbl.timestamps(true, true);
     })
-    .createTable('us_eastern', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
-    .createTable('us_central', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
-    .createTable('us_mountain', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
-    .createTable('us_arizona', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
-    .createTable('us_pacific', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
-    .createTable('us_alaska', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
-    .createTable('us_hawaii', tbl => {
-      tbl.inherits('weather_data');
-      tbl.unique('zip_code');
-    })
 };
 
 exports.down = function(knex) {

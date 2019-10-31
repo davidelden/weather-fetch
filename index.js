@@ -4,8 +4,8 @@ const migrateLatest = require('./src/db/migrateLatest.js'),
       readStream = require('./src/streams/actions/readStream.js'),
       msgEmitter = require('./src/emitter/msgEmitter'),
       fetchWeatherData = require('./src/fetch/fetchWeatherData'),
-      startServer = require('./src/api/server.js');
-      streamName = 'StartWeatherFetch',
+      startServer = require('./src/api/server.js'),
+      streamName = 'WeatherZipCodes';
 
 migrateLatest();
 readStream(streamName);

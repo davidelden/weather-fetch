@@ -12,9 +12,16 @@ const readStream = (streamName, elemId = '$', timeout = '0') => {
       newId = stream[0][1][0][0];
       let streamArr = [ ...stream[0][1][0][1] ],
           msgIndex = streamArr.indexOf('message') + 1,
+          zipCodeIndex = streamArr.indexOf('zipcode'),
           msg = streamArr[msgIndex];
 
-      msgEmitter.emit('streamMessage', msg);
+      if(zipCodeIndex !== -1) {
+        let zipCode = streamArr[zipCodeIndex+1];
+
+        msgEmitter.emit('streamMessage', [msg, zipCode]);
+      } else {
+        msgEmitter.emit('streamMessage', msg);
+      }
     }
 
     readStream(streamName, newId);

@@ -16,6 +16,9 @@ const fetchWeatherData = async msg => {
         dbTbl = 'weather_data';
 
   fetchFromAPI(forecastEndPoint)
+    // delay call to subsequent #fetchFromAPI to avoid
+    // 503 response from Weatherbit API
+    .then(response => new Promise(resolve => setTimeout(() => resolve(response), 2000)))
     .then(forecastData => {
       return (
         fetchFromAPI(currentTempEndPoint)
